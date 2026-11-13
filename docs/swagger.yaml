@@ -1,0 +1,608 @@
+definitions:
+  httpresponse.SetResponse:
+    properties:
+      accessTime:
+        type: string
+      data: {}
+      status:
+        type: string
+    type: object
+  request.BlockLayoutRequest:
+    properties:
+      block_name:
+        type: string
+      floor:
+        type: string
+      warehouse_id:
+        type: integer
+      x_sum:
+        type: integer
+      y_sum:
+        type: integer
+    required:
+    - block_name
+    - warehouse_id
+    type: object
+  request.StorageRequest:
+    properties:
+      block_id:
+        type: integer
+      goods_uid:
+        type: string
+      name:
+        type: string
+      status:
+        type: integer
+      warehouse_id:
+        type: integer
+      x_row:
+        type: integer
+      y_row:
+        type: integer
+    required:
+    - block_id
+    - name
+    - status
+    - warehouse_id
+    type: object
+  request.StorageStatusRequest:
+    properties:
+      name:
+        type: string
+    required:
+    - name
+    type: object
+  request.WarehouseRequest:
+    properties:
+      address:
+        type: string
+      code:
+        type: string
+      name:
+        type: string
+      ttl_area:
+        type: integer
+    required:
+    - code
+    - name
+    type: object
+info:
+  contact: {}
+paths:
+  /block-layout:
+    get:
+      description: list all block layouts
+      parameters:
+      - description: Bearer token
+        in: header
+        name: Authorization
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/httpresponse.SetResponse'
+      summary: list block layouts
+      tags:
+      - block-layout
+    post:
+      description: create block layout
+      parameters:
+      - description: Create Block Layout Request Body
+        in: body
+        name: BlockLayoutRequest
+        required: true
+        schema:
+          $ref: '#/definitions/request.BlockLayoutRequest'
+      - description: Bearer token
+        in: header
+        name: Authorization
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/httpresponse.SetResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/httpresponse.SetResponse'
+      summary: create block layout
+      tags:
+      - block-layout
+  /block-layout/{id}:
+    delete:
+      description: delete block layout by id
+      parameters:
+      - description: Block Layout ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Bearer token
+        in: header
+        name: Authorization
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/httpresponse.SetResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/httpresponse.SetResponse'
+      summary: delete block layout by id
+      tags:
+      - block-layout
+    get:
+      description: get block layout by id
+      parameters:
+      - description: Block Layout ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Bearer token
+        in: header
+        name: Authorization
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/httpresponse.SetResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/httpresponse.SetResponse'
+      summary: get block layout by id
+      tags:
+      - block-layout
+    put:
+      description: update block layout by id
+      parameters:
+      - description: Block Layout ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Update Block Layout Request Body
+        in: body
+        name: BlockLayoutRequest
+        required: true
+        schema:
+          $ref: '#/definitions/request.BlockLayoutRequest'
+      - description: Bearer token
+        in: header
+        name: Authorization
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/httpresponse.SetResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/httpresponse.SetResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/httpresponse.SetResponse'
+      summary: update block layout by id
+      tags:
+      - block-layout
+  /storage:
+    get:
+      description: list all storage
+      parameters:
+      - description: Bearer token
+        in: header
+        name: Authorization
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/httpresponse.SetResponse'
+      summary: list storage
+      tags:
+      - storage
+    post:
+      description: create storage
+      parameters:
+      - description: Create Storage Request Body
+        in: body
+        name: StorageRequest
+        required: true
+        schema:
+          $ref: '#/definitions/request.StorageRequest'
+      - description: Bearer token
+        in: header
+        name: Authorization
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/httpresponse.SetResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/httpresponse.SetResponse'
+      summary: create storage
+      tags:
+      - storage
+  /storage/{uid}:
+    delete:
+      description: delete storage by uid
+      parameters:
+      - description: Storage UID
+        in: path
+        name: uid
+        required: true
+        type: string
+      - description: Bearer token
+        in: header
+        name: Authorization
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/httpresponse.SetResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/httpresponse.SetResponse'
+      summary: delete storage by uid
+      tags:
+      - storage
+    get:
+      description: get storage by uid
+      parameters:
+      - description: Storage UID
+        in: path
+        name: uid
+        required: true
+        type: string
+      - description: Bearer token
+        in: header
+        name: Authorization
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/httpresponse.SetResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/httpresponse.SetResponse'
+      summary: get storage by uid
+      tags:
+      - storage
+    put:
+      description: update storage by uid
+      parameters:
+      - description: Storage UID
+        in: path
+        name: uid
+        required: true
+        type: string
+      - description: Update Storage Request Body
+        in: body
+        name: StorageRequest
+        required: true
+        schema:
+          $ref: '#/definitions/request.StorageRequest'
+      - description: Bearer token
+        in: header
+        name: Authorization
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/httpresponse.SetResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/httpresponse.SetResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/httpresponse.SetResponse'
+      summary: update storage by uid
+      tags:
+      - storage
+  /storage/status:
+    get:
+      description: list all storage statuses
+      parameters:
+      - description: Bearer token
+        in: header
+        name: Authorization
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/httpresponse.SetResponse'
+      summary: list storage statuses
+      tags:
+      - storage-status
+    post:
+      description: create storage status
+      parameters:
+      - description: Create Storage Status Request Body
+        in: body
+        name: StorageStatusRequest
+        required: true
+        schema:
+          $ref: '#/definitions/request.StorageStatusRequest'
+      - description: Bearer token
+        in: header
+        name: Authorization
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/httpresponse.SetResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/httpresponse.SetResponse'
+      summary: create storage status
+      tags:
+      - storage-status
+  /storage/status/{id}:
+    delete:
+      description: delete storage status by id
+      parameters:
+      - description: Storage Status ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Bearer token
+        in: header
+        name: Authorization
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/httpresponse.SetResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/httpresponse.SetResponse'
+      summary: delete storage status by id
+      tags:
+      - storage-status
+    get:
+      description: get storage status by id
+      parameters:
+      - description: Storage Status ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Bearer token
+        in: header
+        name: Authorization
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/httpresponse.SetResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/httpresponse.SetResponse'
+      summary: get storage status by id
+      tags:
+      - storage-status
+    put:
+      description: update storage status by id
+      parameters:
+      - description: Storage Status ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Update Storage Status Request Body
+        in: body
+        name: StorageStatusRequest
+        required: true
+        schema:
+          $ref: '#/definitions/request.StorageStatusRequest'
+      - description: Bearer token
+        in: header
+        name: Authorization
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/httpresponse.SetResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/httpresponse.SetResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/httpresponse.SetResponse'
+      summary: update storage status by id
+      tags:
+      - storage-status
+  /warehouse:
+    get:
+      description: list all warehouse
+      parameters:
+      - description: Bearer token
+        in: header
+        name: Authorization
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/httpresponse.SetResponse'
+      summary: list warehouse
+      tags:
+      - warehouse
+    post:
+      description: create warehouse
+      parameters:
+      - description: Create Warehouse Request Body
+        in: body
+        name: WarehouseRequest
+        required: true
+        schema:
+          $ref: '#/definitions/request.WarehouseRequest'
+      - description: Bearer token
+        in: header
+        name: Authorization
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/httpresponse.SetResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/httpresponse.SetResponse'
+      summary: create warehouse
+      tags:
+      - warehouse
+  /warehouse/{id}:
+    delete:
+      description: delete warehouse by id
+      parameters:
+      - description: Warehouse ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Bearer token
+        in: header
+        name: Authorization
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/httpresponse.SetResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/httpresponse.SetResponse'
+      summary: delete warehouse by id
+      tags:
+      - warehouse
+    get:
+      description: get warehouse by id
+      parameters:
+      - description: Warehouse ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Bearer token
+        in: header
+        name: Authorization
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/httpresponse.SetResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/httpresponse.SetResponse'
+      summary: get warehouse by id
+      tags:
+      - warehouse
+    put:
+      description: update warehouse by id
+      parameters:
+      - description: Warehouse ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Update Warehouse Request Body
+        in: body
+        name: WarehouseRequest
+        required: true
+        schema:
+          $ref: '#/definitions/request.WarehouseRequest'
+      - description: Bearer token
+        in: header
+        name: Authorization
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/httpresponse.SetResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/httpresponse.SetResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/httpresponse.SetResponse'
+      summary: update warehouse by id
+      tags:
+      - warehouse
+swagger: "2.0"

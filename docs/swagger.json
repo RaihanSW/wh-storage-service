@@ -1,0 +1,922 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/block-layout": {
+            "get": {
+                "description": "list all block layouts",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "block-layout"
+                ],
+                "summary": "list block layouts",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer token",
+                        "name": "Authorization",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/httpresponse.SetResponse"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "create block layout",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "block-layout"
+                ],
+                "summary": "create block layout",
+                "parameters": [
+                    {
+                        "description": "Create Block Layout Request Body",
+                        "name": "BlockLayoutRequest",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/request.BlockLayoutRequest"
+                        }
+                    },
+                    {
+                        "type": "string",
+                        "description": "Bearer token",
+                        "name": "Authorization",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/httpresponse.SetResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/httpresponse.SetResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/block-layout/{id}": {
+            "get": {
+                "description": "get block layout by id",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "block-layout"
+                ],
+                "summary": "get block layout by id",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Block Layout ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Bearer token",
+                        "name": "Authorization",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/httpresponse.SetResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/httpresponse.SetResponse"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "update block layout by id",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "block-layout"
+                ],
+                "summary": "update block layout by id",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Block Layout ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Update Block Layout Request Body",
+                        "name": "BlockLayoutRequest",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/request.BlockLayoutRequest"
+                        }
+                    },
+                    {
+                        "type": "string",
+                        "description": "Bearer token",
+                        "name": "Authorization",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/httpresponse.SetResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/httpresponse.SetResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/httpresponse.SetResponse"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "delete block layout by id",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "block-layout"
+                ],
+                "summary": "delete block layout by id",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Block Layout ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Bearer token",
+                        "name": "Authorization",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/httpresponse.SetResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/httpresponse.SetResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/storage": {
+            "get": {
+                "description": "list all storage",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "storage"
+                ],
+                "summary": "list storage",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer token",
+                        "name": "Authorization",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/httpresponse.SetResponse"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "create storage",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "storage"
+                ],
+                "summary": "create storage",
+                "parameters": [
+                    {
+                        "description": "Create Storage Request Body",
+                        "name": "StorageRequest",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/request.StorageRequest"
+                        }
+                    },
+                    {
+                        "type": "string",
+                        "description": "Bearer token",
+                        "name": "Authorization",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/httpresponse.SetResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/httpresponse.SetResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/storage/status": {
+            "get": {
+                "description": "list all storage statuses",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "storage-status"
+                ],
+                "summary": "list storage statuses",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer token",
+                        "name": "Authorization",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/httpresponse.SetResponse"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "create storage status",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "storage-status"
+                ],
+                "summary": "create storage status",
+                "parameters": [
+                    {
+                        "description": "Create Storage Status Request Body",
+                        "name": "StorageStatusRequest",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/request.StorageStatusRequest"
+                        }
+                    },
+                    {
+                        "type": "string",
+                        "description": "Bearer token",
+                        "name": "Authorization",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/httpresponse.SetResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/httpresponse.SetResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/storage/status/{id}": {
+            "get": {
+                "description": "get storage status by id",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "storage-status"
+                ],
+                "summary": "get storage status by id",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Storage Status ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Bearer token",
+                        "name": "Authorization",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/httpresponse.SetResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/httpresponse.SetResponse"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "update storage status by id",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "storage-status"
+                ],
+                "summary": "update storage status by id",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Storage Status ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Update Storage Status Request Body",
+                        "name": "StorageStatusRequest",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/request.StorageStatusRequest"
+                        }
+                    },
+                    {
+                        "type": "string",
+                        "description": "Bearer token",
+                        "name": "Authorization",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/httpresponse.SetResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/httpresponse.SetResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/httpresponse.SetResponse"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "delete storage status by id",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "storage-status"
+                ],
+                "summary": "delete storage status by id",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Storage Status ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Bearer token",
+                        "name": "Authorization",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/httpresponse.SetResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/httpresponse.SetResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/storage/{uid}": {
+            "get": {
+                "description": "get storage by uid",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "storage"
+                ],
+                "summary": "get storage by uid",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Storage UID",
+                        "name": "uid",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Bearer token",
+                        "name": "Authorization",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/httpresponse.SetResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/httpresponse.SetResponse"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "update storage by uid",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "storage"
+                ],
+                "summary": "update storage by uid",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Storage UID",
+                        "name": "uid",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Update Storage Request Body",
+                        "name": "StorageRequest",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/request.StorageRequest"
+                        }
+                    },
+                    {
+                        "type": "string",
+                        "description": "Bearer token",
+                        "name": "Authorization",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/httpresponse.SetResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/httpresponse.SetResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/httpresponse.SetResponse"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "delete storage by uid",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "storage"
+                ],
+                "summary": "delete storage by uid",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Storage UID",
+                        "name": "uid",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Bearer token",
+                        "name": "Authorization",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/httpresponse.SetResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/httpresponse.SetResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/warehouse": {
+            "get": {
+                "description": "list all warehouse",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "warehouse"
+                ],
+                "summary": "list warehouse",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer token",
+                        "name": "Authorization",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/httpresponse.SetResponse"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "create warehouse",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "warehouse"
+                ],
+                "summary": "create warehouse",
+                "parameters": [
+                    {
+                        "description": "Create Warehouse Request Body",
+                        "name": "WarehouseRequest",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/request.WarehouseRequest"
+                        }
+                    },
+                    {
+                        "type": "string",
+                        "description": "Bearer token",
+                        "name": "Authorization",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/httpresponse.SetResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/httpresponse.SetResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/warehouse/{id}": {
+            "get": {
+                "description": "get warehouse by id",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "warehouse"
+                ],
+                "summary": "get warehouse by id",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Warehouse ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Bearer token",
+                        "name": "Authorization",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/httpresponse.SetResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/httpresponse.SetResponse"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "update warehouse by id",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "warehouse"
+                ],
+                "summary": "update warehouse by id",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Warehouse ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Update Warehouse Request Body",
+                        "name": "WarehouseRequest",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/request.WarehouseRequest"
+                        }
+                    },
+                    {
+                        "type": "string",
+                        "description": "Bearer token",
+                        "name": "Authorization",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/httpresponse.SetResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/httpresponse.SetResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/httpresponse.SetResponse"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "delete warehouse by id",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "warehouse"
+                ],
+                "summary": "delete warehouse by id",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Warehouse ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Bearer token",
+                        "name": "Authorization",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/httpresponse.SetResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/httpresponse.SetResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "httpresponse.SetResponse": {
+            "type": "object",
+            "properties": {
+                "accessTime": {
+                    "type": "string"
+                },
+                "data": {},
+                "status": {
+                    "type": "string"
+                }
+            }
+        },
+        "request.BlockLayoutRequest": {
+            "type": "object",
+            "required": [
+                "block_name",
+                "warehouse_id"
+            ],
+            "properties": {
+                "block_name": {
+                    "type": "string"
+                },
+                "floor": {
+                    "type": "string"
+                },
+                "warehouse_id": {
+                    "type": "integer"
+                },
+                "x_sum": {
+                    "type": "integer"
+                },
+                "y_sum": {
+                    "type": "integer"
+                }
+            }
+        },
+        "request.StorageRequest": {
+            "type": "object",
+            "required": [
+                "block_id",
+                "name",
+                "status",
+                "warehouse_id"
+            ],
+            "properties": {
+                "block_id": {
+                    "type": "integer"
+                },
+                "goods_uid": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "integer"
+                },
+                "warehouse_id": {
+                    "type": "integer"
+                },
+                "x_row": {
+                    "type": "integer"
+                },
+                "y_row": {
+                    "type": "integer"
+                }
+            }
+        },
+        "request.StorageStatusRequest": {
+            "type": "object",
+            "required": [
+                "name"
+            ],
+            "properties": {
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "request.WarehouseRequest": {
+            "type": "object",
+            "required": [
+                "code",
+                "name"
+            ],
+            "properties": {
+                "address": {
+                    "type": "string"
+                },
+                "code": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "ttl_area": {
+                    "type": "integer"
+                }
+            }
+        }
+    }
+}

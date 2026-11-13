@@ -1,0 +1,441 @@
+{
+  "info": {
+    "name": "wh-storage-service",
+    "description": "Endpoints dari app/controller/controller.go. Base URL default: http://localhost:4000 (port dari application_local.json).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:4000"
+    }
+  ],
+  "item": [
+    {
+      "name": "General",
+      "item": [
+        {
+          "name": "Ping",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/ping"
+          }
+        },
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/health/check"
+          }
+        },
+        {
+          "name": "Health Check DB",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/health/check-db"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Storage",
+      "item": [
+        {
+          "name": "Create Storage",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"\",\n    \"goods_uid\": \"\",\n    \"warehouse_id\": 0,\n    \"block_id\": 0,\n    \"status\": 0,\n    \"x_row\": 0,\n    \"y_row\": 0\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "{{base_url}}/storage"
+          }
+        },
+        {
+          "name": "Get All Storage",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/storage"
+          }
+        },
+        {
+          "name": "Get Storage By UID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/storage/:uid",
+              "host": ["{{base_url}}"],
+              "path": ["storage", ":uid"],
+              "variable": [
+                {
+                  "key": "uid",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update Storage",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"\",\n    \"goods_uid\": \"\",\n    \"warehouse_id\": 0,\n    \"block_id\": 0,\n    \"status\": 0,\n    \"x_row\": 0,\n    \"y_row\": 0\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/storage/:uid",
+              "host": ["{{base_url}}"],
+              "path": ["storage", ":uid"],
+              "variable": [
+                {
+                  "key": "uid",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete Storage",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{base_url}}/storage/:uid",
+              "host": ["{{base_url}}"],
+              "path": ["storage", ":uid"],
+              "variable": [
+                {
+                  "key": "uid",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Storage Status",
+      "item": [
+        {
+          "name": "Create Storage Status",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "{{base_url}}/storage/status"
+          }
+        },
+        {
+          "name": "Get All Storage Status",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/storage/status"
+          }
+        },
+        {
+          "name": "Get Storage Status By ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/storage/status/:id",
+              "host": ["{{base_url}}"],
+              "path": ["storage", "status", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update Storage Status",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/storage/status/:id",
+              "host": ["{{base_url}}"],
+              "path": ["storage", "status", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete Storage Status",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{base_url}}/storage/status/:id",
+              "host": ["{{base_url}}"],
+              "path": ["storage", "status", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Warehouse",
+      "item": [
+        {
+          "name": "Create Warehouse",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"\",\n    \"code\": \"\",\n    \"address\": \"\",\n    \"ttl_area\": 0\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "{{base_url}}/warehouse"
+          }
+        },
+        {
+          "name": "Get All Warehouse",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/warehouse"
+          }
+        },
+        {
+          "name": "Get Warehouse By ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/warehouse/:id",
+              "host": ["{{base_url}}"],
+              "path": ["warehouse", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update Warehouse",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"\",\n    \"code\": \"\",\n    \"address\": \"\",\n    \"ttl_area\": 0\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/warehouse/:id",
+              "host": ["{{base_url}}"],
+              "path": ["warehouse", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete Warehouse",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{base_url}}/warehouse/:id",
+              "host": ["{{base_url}}"],
+              "path": ["warehouse", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Block Layout",
+      "item": [
+        {
+          "name": "Create Block Layout",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"warehouse_id\": 0,\n    \"block_name\": \"\",\n    \"floor\": \"\",\n    \"x_sum\": 0,\n    \"y_sum\": 0\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "{{base_url}}/block-layout"
+          }
+        },
+        {
+          "name": "Get All Block Layout",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/block-layout"
+          }
+        },
+        {
+          "name": "Get Block Layout By ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/block-layout/:id",
+              "host": ["{{base_url}}"],
+              "path": ["block-layout", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update Block Layout",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"warehouse_id\": 0,\n    \"block_name\": \"\",\n    \"floor\": \"\",\n    \"x_sum\": 0,\n    \"y_sum\": 0\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/block-layout/:id",
+              "host": ["{{base_url}}"],
+              "path": ["block-layout", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete Block Layout",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{base_url}}/block-layout/:id",
+              "host": ["{{base_url}}"],
+              "path": ["block-layout", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
