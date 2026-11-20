@@ -3,6 +3,12 @@ package main
 import (
 	"context"
 	"database/sql"
+	"flag"
+	syslog "log"
+	"os"
+	"os/signal"
+	"strconv"
+	"time"
 	"wh-storage-service/app/controller"
 	apihandler "wh-storage-service/app/controller/handler"
 	"wh-storage-service/app/repository"
@@ -11,13 +17,6 @@ import (
 	"wh-storage-service/log"
 	"wh-storage-service/migration"
 	"wh-storage-service/seed"
-	"flag"
-	"fmt"
-	syslog "log"
-	"os"
-	"os/signal"
-	"strconv"
-	"time"
 )
 
 func main() {
@@ -39,7 +38,7 @@ func main() {
 	// Init external connections
 	database, err := config.InitDBConnection(cfg)
 	if err != nil {
-		log.Logging.Fatalf("Error connecting to DB: %v\n", err)
+		syslog.Fatalf("Error connecting to DB: %v\n", err)
 	}
 
 	// DB maintenance subcommands: migrate / seed
@@ -69,7 +68,7 @@ func main() {
 	blockLayoutHandler := apihandler.NewBlockLayoutHandler(blockLayoutService)
 
 	// Run, service, run!!!!
-	log.Logging.Infoln("Application is running, Port : " + fmt.Sprintf("%v", cfg.Port.Service))
+	log.Logging.Info("Application is running", "port", cfg.Port.Service)
 	rest := controller.NewController(storageHandler, storageStatusHandler, warehouseHandler, blockLayoutHandler, generalHandler, cfg, env).StartRoute()
 
 	// Wait for the interrupt signal to gracefully shut down the server with
@@ -77,7 +76,7 @@ func main() {
 	quit := make(chan os.Signal, 1)
 	signal.Notify(quit, os.Interrupt)
 	<-quit
-	log.Logging.Infoln("Shutdown Application ...")
+	log.Logging.Info("Shutdown application")
 
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 
@@ -91,9 +90,9 @@ func main() {
 	}()
 
 	if err := rest.Shutdown(ctx); err != nil {
-		log.Logging.Fatalf("Server Shutdown: %v", err)
+		syslog.Fatalf("Server shutdown: %v", err)
 	}
-	log.Logging.Infoln("Application Stopped")
+	log.Logging.Info("Application stopped")
 }
 
 // runDBCommand handles `migrate` / `seed` subcommands passed after flags,
