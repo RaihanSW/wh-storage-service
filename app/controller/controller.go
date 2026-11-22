@@ -1,16 +1,16 @@
 package controller
 
 import (
-	"wh-storage-service/app/controller/handler"
-	"wh-storage-service/app/controller/handler/middleware"
-	"wh-storage-service/app/model/constant"
-	"wh-storage-service/config"
-	"wh-storage-service/docs"
 	"fmt"
 	"log"
 	"net/http"
 	"strings"
 	"time"
+	"wh-storage-service/app/controller/handler"
+	"wh-storage-service/app/controller/handler/middleware"
+	"wh-storage-service/app/model/constant"
+	"wh-storage-service/config"
+	"wh-storage-service/docs"
 
 	"github.com/go-chi/chi/v5"
 	httpSwagger "github.com/swaggo/http-swagger/v2"
@@ -49,6 +49,7 @@ func NewController(
 func (c *Controller) StartRoute() *http.Server {
 	r := chi.NewRouter()
 
+	r.Use(corsMiddleware())
 	r.Use(middleware.Middleware())
 
 	r.Get("/ping", middleware.SetRequestID(c.generalHandler.Ping))
